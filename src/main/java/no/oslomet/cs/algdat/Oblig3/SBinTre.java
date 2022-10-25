@@ -84,7 +84,6 @@ public class SBinTre<T> {
     }
 
     public boolean leggInn(T verdi) {
-
         Objects.requireNonNull(verdi, "Ulovlig med nullverdier!");
 
         Node<T> p = rot, q = null;               // p starter i roten
@@ -122,7 +121,21 @@ public class SBinTre<T> {
     }
 
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Objects.requireNonNull(verdi, "Ulovlig med nullverdier!");
+
+        int antall = 0;                         // antall starter på 0
+
+        Node<T> p = rot;                        // p starter i roten
+        int cmp;                                // hjelpevariabel
+
+        while (p != null)       // fortsetter til p er ute av treet
+        {
+            if (p.verdi == verdi) antall++;         // øker antall dersom verdi eksisterer
+            cmp = comp.compare(verdi,p.verdi);      // bruker komparatoren
+            p = cmp < 0 ? p.venstre : p.høyre;      // flytter p
+        }
+
+        return antall;
     }
 
     public void nullstill() {
