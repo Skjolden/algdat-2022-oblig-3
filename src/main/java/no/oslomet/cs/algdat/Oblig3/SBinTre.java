@@ -145,25 +145,26 @@ public class SBinTre<T> {
     private static <T> Node<T> førstePostorden(Node<T> p) {
         while (true)
         {
-            if (p.venstre != null) {
+            if (p.venstre != null) {        // går til venstre om mulig
                 p = p.venstre;
             }
-            else if (p.høyre != null) {
+            else if (p.høyre != null) {     // går til høyre om mulig dersom det ikke er en venstre
                 p = p.høyre;
-            } else return p;
+            } else return p;                // returnerer første postorden
         }
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
-        if (p.forelder != null) {
-            if (p == p.forelder.høyre) return p.forelder;
-            else if (p == p.forelder.venstre) {
-                if (p.forelder.høyre != null) {
-                    return førstePostorden(p);
-                } else return p.forelder;
+        if (p.forelder != null) {                               // sjekker at p ikke er rotnoden
+            if (p == p.forelder.høyre) return p.forelder;       // p er høyre barn til sin forelder
+            else if (p == p.forelder.venstre) {                 // p er venstre barn til sin forelder
+                if (p.forelder.høyre != null) {                 // p er ikke enebarn
+                    // første postorden av høyrebarnet til forelderen til p
+                    return førstePostorden(p.forelder.høyre);
+                } else return p.forelder;                       // p er enebarn
             }
         }
-        return null;
+        return null;    // p er rotnoden
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
