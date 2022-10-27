@@ -232,7 +232,3 @@ eval "set -- $(
     )" '"$@"'
 
 exec "$JAVACMD" "$@"
-
-#Fiks for at gradle ikke kjører på github
-- name: Run chmod to make gradlew executable
-   run: chmod +x ./gradlew
