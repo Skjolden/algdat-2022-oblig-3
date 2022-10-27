@@ -203,6 +203,7 @@ public class Oblig3Test {
 
         SBinTre<Integer> tre2 = SBinTre.deserialize(data, Comparator.naturalOrder());
         assertEquals(tre.toStringPostOrder(), tre2.toStringPostOrder());
+        System.out.println("antall til treet: " + tre2.antall());
     } // slutt på Oppgave 5
 
 

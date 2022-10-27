@@ -195,13 +195,9 @@ public class SBinTre<T> {
             Node<T> denne = kø.removeFirst();
 
             // Legg til denne sine venstre barn til køen
-            if (denne.venstre != null) {
-                kø.addLast(denne.venstre);
-            }
+            if (denne.venstre != null) kø.addLast(denne.venstre);
             // Legg til denne sine høyre barn til køen
-            if (denne.høyre != null) {
-                kø.addLast(denne.høyre);
-            }
+            if (denne.høyre != null) kø.addLast(denne.høyre);
             // Legger til verdien til denne i listen
             liste.add(denne.verdi);
         }
@@ -209,7 +205,9 @@ public class SBinTre<T> {
     }
 
     static <K> SBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        SBinTre<K> tre = new SBinTre<>(c);  // Lager nytt tre
+        data.forEach(tre::leggInn);         // Legger inn alle nodene
+        return tre;
     }
 
 
