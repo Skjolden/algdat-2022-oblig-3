@@ -207,7 +207,7 @@ public class Oblig3Test {
 
 
     // OPPGAVE 6 ////////////////////////////////////////////////
-    @org.junit.jupiter.api.Test
+    /*@org.junit.jupiter.api.Test
     void oppgave6() {
         int antallFeil = 0;
 
@@ -392,7 +392,7 @@ public class Oblig3Test {
             System.out.println("pekere i treet skal nulles!");
         }
         assertEquals(antallFeil, 0);
-    }  // slutt på Oppgave 5
+    }*/  // slutt på Oppgave 5
 
 
 } // Oblig3Test
